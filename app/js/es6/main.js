@@ -101,21 +101,26 @@ $(function () {
     delay = setting.getTime(),
     totalNews = setting.getCountNews(),
     startPos = 2,
-    empNews = false,
 
     progress = false,
     arrPost = [],
     $items = null;
 
+
+    // Get meta Data for user
   let startCheckUser = setInterval(async () => {
     let res = await getMeta($.cookie('session-key'));
 
     if (res.status == 200 && res.data.length !== 0) {
       const data = res.data[0];
       if (data.clearInterval) {
-        stopCheckUser();
+        return 0;
       } else {
-        totalNews = data['count-news'];
+        if (data['count-news'] > totalNews) {
+          totalNews = data['count-news'];
+          progress = false;
+        } 
+        
         console.log("User name: " + data.name + ", TotalPos:" + totalNews);
       }
 
@@ -126,7 +131,6 @@ $(function () {
     console.log("%cget Data User: " + res.status, "color: #1122cc")
   }, delay);
 
-  let stopCheckUser = () => clearInterval(startCheckUser);
 
   var
     // Конпка для возврата в верх страницы
@@ -154,8 +158,6 @@ $(function () {
     checkScroll(scrollOffset);
 
   });
-
-
 
 
   // Smooth scroll
@@ -187,11 +189,13 @@ $(function () {
       if ($(window).scrollTop() + $(window).height() >= $(document).height() - 200 && !progress) {
         console.log("Scrolled to end of content.");
         $items = $("#custom-scrollbar");
-        if (!progress && totalNews > startPos) {
+        
+        if (totalNews > startPos) {
           let $this = $items.find(".news-msg");
-          if (empNews && $this.is(".warning")) { $this.last().animate({ opacity: 0 }, 500, () => $this.parent().remove()); }
+          // if fetch news then delete .warning
+          if ($this.is(".warning")) { $this.last().animate({ opacity: 0 }, 500, () => $this.parent().remove()); }
           console.log('Ajax');
-          // get news
+          // Get News
           $.ajax({
             url: "http://localhost:3002/news",
             type: "GET",
@@ -200,7 +204,6 @@ $(function () {
               _start: startPos,
               _limit: 1
             },
-            // async: false,
 
             beforeSend: function () {
               progress = true;
@@ -211,8 +214,7 @@ $(function () {
                 arrPost.push(...data);
                 progress = false;
               } else {
-
-                // progress = undefined;
+                progress = true;
                 console.log('progress: ');
               }
             },
@@ -298,7 +300,7 @@ $(function () {
 
           // 
         } else { //if progress
-          empNews = true;
+          progress = true;
           if ($items.find('.news-msg').is(".warning")) {
             $(this).val('Новостей пока что нет.');
             console.log('Новостей пока что нет.');
