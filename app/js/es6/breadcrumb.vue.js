@@ -53,7 +53,7 @@ let app1 = new Vue({
     breadcrumbList: [{ "itemListElement": [] }],
 
     urls: {
-      news: 'http://192.168.1.105:3002/routes',
+      news: 'http://localhost:3002/routes',
     },
   },
 
@@ -80,7 +80,7 @@ let app1 = new Vue({
   async mounted() {
 
     let cookie = $.cookie('session-key');
-    let url = "http://192.168.1.105:3002/events_user?session-key=" + cookie;
+    let url = "http://localhost:3002/events_user?session-key=" + cookie;
     await axios
       .get(url)
       .then(response => {

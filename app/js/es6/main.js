@@ -193,7 +193,7 @@ $(function () {
           console.log('Ajax');
           // get news
           $.ajax({
-            url: "http://192.168.1.105:3002/news",
+            url: "http://localhost:3002/news",
             type: "GET",
             // data: '_start=' + startPos + '&_limit=1',
             data: {
@@ -201,7 +201,7 @@ $(function () {
               _limit: 1
             },
             // async: false,
-            
+
             beforeSend: function () {
               progress = true;
             },
@@ -321,7 +321,7 @@ $(function () {
 
 const getMeta = async (cookie) => {
   // 65r2h6e26okx9o55t
-  let url = "http://192.168.1.105:3002/events_user?session-key=" + cookie;
+  let url = "http://localhost:3002/events_user?session-key=" + cookie;
   let json_data = await axios.get(url);
   return json_data;
 }

@@ -32,8 +32,8 @@
       param_php = undefined;
 
     if (param_php === undefined || param_php === "") {
-      // http://192.168.1.105:3002 REST API
-      xhr.open('GET', 'http://192.168.1.105:3002/events_user' + '?id=' + 1, false);
+      // http://localhost:3002 REST API
+      xhr.open('GET', 'http://localhost:3002/events_user' + '?id=' + 1, false);
       xhr.send();
       if (xhr.status != 200) {
         alert(xhr.status + ': ' + xhr.statusText);

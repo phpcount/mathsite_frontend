@@ -34,8 +34,8 @@
         param_php = undefined;
 
       if (param_php === undefined || param_php === "") {
-        // http://192.168.1.105:3002 REST API
-        xhr.open('GET', 'http://192.168.1.105:3002/events_user' + '?id=' + 1, false);
+        // http://localhost:3002 REST API
+        xhr.open('GET', 'http://localhost:3002/events_user' + '?id=' + 1, false);
         xhr.send();
         if (xhr.status != 200) {
           alert(xhr.status + ': ' + xhr.statusText);
@@ -126,7 +126,14 @@
       <div class="breadcrumb-title">Вы здесь:</div>
       <div class="breadcrumb-links">
         <span vocab="https://schema.org/" typeof="BreadcrumbList">
-          <breadcrumb-data :mark="mark" :len="lenObj(breadcrumbList)" v-if="load" v-for="(breadcrumb, index) in breadcrumbList[0].itemListElement" v-bind:key="breadcrumb.position" v-bind:breadcrumb="breadcrumb" :index="index"></breadcrumb-data>
+          <breadcrumb-data 
+          :mark="mark" 
+          :len="lenObj(breadcrumbList)" 
+          v-if="load" 
+          v-for="(breadcrumb, index) in breadcrumbList[0].itemListElement" 
+          :key="breadcrumb.position" 
+          :breadcrumb="breadcrumb" 
+          :index="index"></breadcrumb-data>
         </span>
       </div>
     </div>
