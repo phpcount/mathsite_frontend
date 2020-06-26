@@ -40,6 +40,37 @@ class SettingApp {
   // only dev //
 }
 
+let loadContentJQ = {
+
+  handle: null,
+  child: "loading__content",
+
+  loading() {
+    let content = `
+      <div class="news-item">
+          <div id="` + this.child + `" class="loading__news">
+            <div class="loading__inner">
+              <li class="scale-1"></li>
+              <li class="scale-2"></li>
+              <li class="scale-3"></li>
+            </div>
+          </div>
+      </div>
+  `;
+    $(this.handle).append(content);
+  },
+
+  remove() {
+    let $this = $("#" + this.child);
+    if ($this.is(".loading__news")) {
+      $this.animate(
+        { opacity: 0 }, 300,
+        () => $this.parent().remove());
+    };
+  },
+}
+
+
 $(function () {
 
   let setting = new SettingApp(defSetting);
@@ -104,11 +135,14 @@ $(function () {
 
     progress = false,
     arrPost = [],
-    $items = null;
 
+    // Obj
+    $items = null; 
+    loadContentJQ.handle = "#custom-scrollbar";
 
     // Get meta Data for user
   let startCheckUser = setInterval(async () => {
+    // check user settings at delay
     let res = await getMeta($.cookie('session-key'));
 
     if (res.status == 200 && res.data.length !== 0) {
@@ -184,29 +218,29 @@ $(function () {
 
   // when scrolling down run ajax req
   $(window).scroll(function () {
+
     let upadateScroll = setInterval(() => {
       // height window + height scroll >= height of the entire document
       if ($(window).scrollTop() + $(window).height() >= $(document).height() - 200 && !progress) {
         console.log("Scrolled to end of content.");
         $items = $("#custom-scrollbar");
-        
         if (totalNews > startPos) {
           let $this = $items.find(".news-msg");
-          // if fetch news then delete .warning
+          // if fetch news then delete warning
           if ($this.is(".warning")) { $this.last().animate({ opacity: 0 }, 500, () => $this.parent().remove()); }
           console.log('Ajax');
           // Get News
           $.ajax({
             url: "http://localhost:3002/news",
             type: "GET",
-            // data: '_start=' + startPos + '&_limit=1',
             data: {
               _start: startPos,
               _limit: 1
             },
 
             beforeSend: function () {
-              progress = true;
+              loadContentJQ.loading();
+              progress = true;  
             },
 
             success: function (data) {
@@ -220,11 +254,9 @@ $(function () {
             },
 
             complete: function () {
-              /*$(".YOUR-CONTENT-DIV").mCustomScrollbar({
-                theme: "dark",
-              });*/
               $.each(arrPost, function (i, news) {
-                // console.log($items);
+                // console.log($items);   
+                loadContentJQ.remove();   
                 $items.append(`
                 <div class="news-item op">
                   <div class="inner-wrapper">
@@ -301,10 +333,12 @@ $(function () {
           // 
         } else { //if progress
           progress = true;
-          if ($items.find('.news-msg').is(".warning")) {
+          loadContentJQ.remove();
+          if (!progress && $items.find('.news-msg').is(".warning")) {
             $(this).val('Новостей пока что нет.');
-            console.log('Новостей пока что нет.');
           } else {
+            console.log('add warning');
+            // add warning
             $items.append(`
             <div class="news-item"><div class="news-msg warning">Новостей пока что нет.</div></div>
             `);
@@ -314,7 +348,7 @@ $(function () {
         console.log(progress);
         // $('#custom-scrollbar').mCustomScrollbar("update")
       }
-    }, 3000);
+    }, 1500);
   });
 
   // JQ End
