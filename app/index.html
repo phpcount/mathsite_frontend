@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Сайт учителя математики</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=PT+Serif:wght@400;700&family=Roboto:wght@100;400;500&Fira+Sans:wght@100;300;400;500;800&family=Bad+Script&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+  <link rel="stylesheet" href="css/jquery.fancybox.min.css">
+  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/5.4.2/css/swiper.min.css"> -->
+  <link rel="stylesheet" href="https://unpkg.com/swiper/css/swiper.min.css">
+  
+  <!-- Fancy Box demos -->
+  <link rel="stylesheet" type="text/css" href="css/examples.css" media="screen">
+
+  <link rel="stylesheet" href="css/style.min.css">
+</head>
+<body>
+  <script>
+    // For test
+    function getRandomInt(max) {
+      return Math.floor(Math.random() * Math.floor(max + 1));
+    }
+    var xhr = new XMLHttpRequest(),
+      defSetting = [],
+      index = getRandomInt(1) + 1,
+      //param_php = '<?= $json_data ?? "" ?>';
+      param_php = undefined;
+
+    if (param_php === undefined || param_php === "") {
+      // http://192.168.1.105:3002 REST API
+      xhr.open('GET', 'http://192.168.1.105:3002/events_user' + '?id=' + 1, false);
+      xhr.send();
+      if (xhr.status != 200) {
+        alert(xhr.status + ': ' + xhr.statusText);
+      } else {
+        defSetting = JSON.parse(xhr.response)[0];
+      }
+    } else {
+      defSetting = JSON.parse(param_php);
+    }
+  </script>
+  <header class="header" id="header">
+    <div class="header__inner" style="background-image: url(img/math-bg24.png);">
+      <div class="header__logo">
+        <img src="img/bg-1.png" alt="Сайт учителя математики">
+      </div>
+
+      <div class="header-text">
+        <div class="header-text__title">
+          <h1>Сайт учителя математики</h1>
+        </div>
+        <div class="header-text__description">
+          <h2>
+            Андреевой Алены Алексеевны
+          </h2>
+        </div>
+
+        <div class="header-searche">
+          <div class="searche">
+            <form>
+              <input type="text" placeholder="Поиск по сайту...">
+              <button type="submit"></button>
+            </form>
+          </div>
+        </div>
+
+        <!-- Text -->
+      </div>
+
+
+      <div class="header-auth">
+        <div class="auth widget widget-close">
+
+          <button type="button" class="widget-close-btn" title="Закрыть окно">Close</button>
+
+          <div class="auth__wrapper">
+            <!-- <i class="fas fa-user-circle"></i> -->
+            <div class="auth-box-user">
+              <i class="far fa-user-circle"></i>
+              <h5>Здравствуйте, <span>Гость</span></h5>
+            </div>
+            <div class="auth-box-btn">
+              <a data-fancybox data-src="#modal-register" href="javascript:;" class="btn">Регистрация</a>
+              <a data-fancybox data-src="#modal-auth" href="javascript:;" class="btn">Вход</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- inner -->
+    </div>
+
+    <div class="container">
+      <div class="header__nav">
+        <nav class="menu" id="nav">
+          <ul class="menu__links">
+            <li><a href="index.html"><i class="fas fa-home"></i>Главная</a></li>
+            <li><a href="news.html"><i class="far fa-newspaper"></i>Новости</a></li>
+            <li><a href="#"><i class="fas fa-chalkboard-teacher"></i>Ученикам</a>
+              <ul class="sub-menu__links">
+                <li><a href="#"><i clas="fas fa-tasks"></i>Домашнее задание</a></li>
+                <li><a href="#"><i class="fab fa-readme"></i>Объявления</a></li>
+                <li><a href="#"><i class="fas fa-user-edit"></i>ЕГЭ ОГЭ</a></li>
+              </ul>
+            </li>
+            <li><a href="#"><i class="fas fa-book"></i>Методическая копилка</a></li>
+            <li><a href="#"><i class="fas fa-random"></i>Разное</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <!-- Slider Home -->
+  <section class="slider" id="slider">
+    <div class="container">
+      <div class="slider__items" id="sliders">
+        <div class="slider__item">
+          <div class="slider__item-bg"><img src="img/slider-home/slider_1.jpg" alt=""></div>
+          <div class="slider__item-content">
+            <div class="slider__item-content-info">
+              <div class="slider__item-content-info__title">Новости</div>
+              <div class="slider__item-content-info__description">Последние новости в сфере науки и образования
+              </div>
+            </div>
+            <div class="slider__item-content-btn"><a href="#">Подробнее</a></div>
+          </div>
+        </div>
+        <div class="slider__item">
+          <div class="slider__item-bg"><img src="img/slider-home/slider_2.jpg" alt=""></div>
+          <div class="slider__item-content">
+            <div class="slider__item-content-info">
+              <div class="slider__item-content-info__title">Фотоальбомы</div>
+              <div class="slider__item-content-info__description">Фотографии со школьных мероприятий</div>
+            </div>
+            <div class="slider__item-content-btn"><a href="#">Подробнее</a></div>
+          </div>
+        </div>
+        <div class="slider__item">
+          <div class="slider__item-bg"><img src="img/slider-home/slider_3.jpg" alt=""></div>
+          <div class="slider__item-content">
+            <div class="slider__item-content-info">
+              <div class="slider__item-content-info__title">Портфолио</div>
+              <div class="slider__item-content-info__description">Достижения и результаты учащихся</div>
+            </div>
+            <div class="slider__item-content-btn"><a href="#">Подробнее</a></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+  <!-- About -->
+  <section class="about">
+    <div class="container">
+      <div class="about__inner">
+        <div class="about__content">
+          <div class="about__content-title">
+            <h3>Добро пожаловать!<br>
+              Я очень рада видеть Вас на моем сайте!</h3>
+          </div>
+          <div class="about__content-description">
+            <P class="about__content-description__item">На страницах сайта Вы найдете:</P>
+            <ul class="about__content-description__item-row">
+              <li>материалы к урокам и внеклассным мероприятиям</li>
+              <li>последние новости в сфере науки и образования</li>
+              <li>олимпиадные и конкурсные задания</li>
+              <li>рабочие программы и программы дополнительного образования</li>
+              <li>индивидуальные домашние задания</li>
+              <li>творческие работы учеников</li>
+              <li>информацию для родителей моих учеников</li>
+              <li>фотоальбомы со школьных мероприятий</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="card__about">
+          <div class="card__about-title">
+            <h3>Обо мне:</h3>
+          </div>
+          <div class="card__about-inner">
+            <img class="card__about-photo" src="http://via.placeholder.com/205x250/66b87b/FFFFFF?text=фото" alt="Учитель математики">
+            <div class="card__about__info">
+              <div class="card__about__info-name">
+                <h4>Андреева Алена Алексеевна</h4>
+              </div>
+              <div class="card__about__info-description">- учитель математики МБОУ **** СОШ<br>
+                Барнаул
+                край, Россия</div>
+              <div class="card__about__info-contacts">
+                <div class="card__about__info-contacts__title">
+                  <h4>Контакты:</h4>
+                </div>
+                <a class="card__about__info-contacts__tel" href="tel:+70000000000"><i
+                    class="fas fa-phone-alt"></i>+7(000)00-00-00</a>
+                <a class="card__about__info-contacts__email" href="mailto:test@test.ru"><i
+                    class="far fa-envelope"></i>test@test.ru</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+  </section>
+
+  <!-- educational resources -->
+  <section class="edu-services">
+    <div class="container">
+      <div class="edu-services__inner">
+
+        <!-- Slider -->
+        <div class="edu-services__slider" id="sweeper-container">
+
+          <div class="swiper-wrapper">
+
+            <!-- Items -->
+            <div class="swiper-slide edu-services__slider-item">
+              <a class="edu-services__item-content" href="#">
+                <img class="edu-services__slider-img" src="img/edu-services/logo_001.png" alt="">
+                <div class="edu-services__slider-desc"></div>
+              </a>
+            </div>
+            <div class="swiper-slide edu-services__slider-item">
+              <a class="edu-services__item-content" href="#">
+                <img class="edu-services__slider-img" src="img/edu-services/logo_002.png" alt="">
+                <div class="edu-services__slider-desc"></div>
+              </a>
+            </div>
+            <div class="swiper-slide edu-services__slider-item">
+              <a class="edu-services__item-content" href="#">
+                <img class="edu-services__slider-img" src="img/edu-services/logo_003.png" alt="">
+                <div class="edu-services__slider-desc"></div>
+              </a>
+            </div>
+            <div class="swiper-slide edu-services__slider-item">
+              <a class="edu-services__item-content" href="#">
+                <img class="edu-services__slider-img" src="img/edu-services/logo_004.png" alt="">
+                <div class="edu-services__slider-desc"></div>
+              </a>
+            </div>
+            <!-- Items -->
+
+          </div>
+          <!-- Wrapper -->
+
+          <!-- Add Arrows -->
+          <div class="swiper-button-next"></div>
+          <div class="swiper-button-prev"></div>
+        </div>
+        <!-- Slider -->
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Quotes -->
+  <section class="excerption">
+    <div class="container">
+      <div class="excerption__title">Цитаты и афоризмы о математике</div>
+      <!-- Cards Quotes -->
+      <div class="excerption-card green-border">
+        <div class="excerption__content">
+          <div class="excerption-text">Математика полезна тем, что она трудна.</div>
+          <div class="excerption-author">АЛЕКСАНДР ДАНИЛОВИЧ АЛЕКСАНДРОВ</div>
+        </div>
+      </div>
+      <div class="excerption-card orange-border">
+        <div class="excerption__content">
+          <div class="excerption-text">Математика выявляет порядок, симметрию и определённость, а это – важнейшие
+            виды
+            прекрасного.</div>
+          <div class="excerption-author">АРИСТОТЕЛЬ</div>
+        </div>
+      </div>
+      <div class="excerption-card green-border">
+        <div class="excerption__content">
+          <div class="excerption-text">Математика остаётся олицетворением науки, символом мудрости, царицей всех
+            наук.
+            Красота математики среди наук
+            недосягаема, а красота является одним из связующих звеньев науки и искусства.</div>
+          <div class="excerption-author">А.В. ВОЛОШИНОВ</div>
+        </div>
+      </div>
+      <div class="excerption-card orange-border">
+        <div class="excerption__content">
+          <div class="excerption-text">Математика — царица наук, арифметика — царица математики. Она часто снисходит
+            до
+            оказания услуг астрономии и другим
+            естественным наукам, но при всех обстоятельствах первое место, несомненно, остаётся за ней.</div>
+          <div class="excerption-author">КАРЛ ФРИДРИХ ГАУСС</div>
+        </div>
+      </div>
+      <div class="excerption-card green-border">
+        <div class="excerption__content">
+          <div class="excerption-text">Часто говорят, что цифры управляют миром; по крайней мере нет сомнения в том,
+            что
+            цифры показывают, как он управляется.</div>
+          <div class="excerption-author">И. ГЁТЕ</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer__content">
+      <div class="container">
+        <div class="footer__inner">
+          <div class="footer__column">
+            <!-- :TODO -->
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer__copyright">
+      <div class="container">
+        <div class="copy__text">
+          © 2020 Template by Viktor Boyko. Все права защищены.
+        </div>
+      </div>
+    </div>
+  </footer>
+  <!-- Scroll Up -> Header -->
+  <a href="javascript:;" id="scroll-up" data-scroll="#header"></a>
+
+
+  <!-- Modal Windows -->
+  <div id="modal-register" class="modal modal-register" style="background-image: url(img/math-bg24.png);">
+    <form action="" method="post">
+      <input type="text" name="" id="" placeholder="Ваше имя">
+      <input type="tel" class="phone" pattern="^\+7[\(]\d{3,}[\)]\d{3,}[\-]\d{4,}$" maxlength="15" name="" id=""
+        placeholder="Ваш телефон +7(XXX)...">
+      <input data-fancybox="" data-animation-duration="500" data-src="#animatedModal" type="submit"
+        value="Зарегистрироваться">
+    </form>
+  </div>
+  
+  <div id="modal-auth" class="modal modal-auth" style="background-image: url(img/math-bg24.png);">
+    <form action="" method="post">
+      <input type="text" name="" id="" placeholder="Ваше имя">
+      <input type="tel" class="phone" pattern="^\+7[\(]\d{3,}[\)]\d{3,}[\-]\d{4,}$" maxlength="15" name="" id=""
+        placeholder="Ваш телефон +7(XXX)...">
+      <input type="submit" value="Войти">
+    </form>
+  </div>
+  
+  
+  
+  
+  <!-- For TESTING -->
+  <style>
+    .fancybox-slide--current .animated-modal,
+    .fancybox-slide--current .animated-modal h2,
+    .fancybox-slide--current .animated-modal p {
+      transform: translateY(0);
+      opacity: 1;
+      transition-duration: .3s;
+    }
+  
+    .fancybox-can-pan .fancybox-content,
+    .fancybox-can-swipe .fancybox-content {
+      cursor: grab;
+    }
+  
+    .animated-modal {
+      max-width: 300px;
+      border-radius: 4px;
+      overflow: hidden;
+      background: linear-gradient(45deg, #543093 32%, #d960ae 100%);
+      transform: translateY(-80px);
+      transition: all .5s;
+    }
+  
+    .animated-modal h2 {
+      font-weight: 500;
+      font-size: 36px !important;
+      line-height: 1 !important;
+    }
+  
+    .animated-modal h2,
+    .animated-modal p {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 1.5;
+      text-align: center !important;
+    }
+  
+    /* Start state */
+    .animated-modal {
+      max-width: 550px;
+      border-radius: 4px;
+      overflow: hidden;
+      background: linear-gradient(45deg, #543093 32%, #d960ae 100%);
+  
+      transform: translateY(-80px);
+      transition: all .5s;
+      /* Should match `data-animation-duration` parameter */
+    }
+  
+    .animated-modal * {
+      color: #fff;
+    }
+  
+    .animated-modal h2,
+    .animated-modal p {
+      transform: translateY(-40px);
+      opacity: 0;
+  
+      transition-property: transform, opacity;
+      transition-duration: .3s;
+    }
+  
+    /* Final state */
+    .fancybox-slide--current .animated-modal,
+    .fancybox-slide--current .animated-modal h2,
+    .fancybox-slide--current .animated-modal p {
+      transform: translateY(0);
+      opacity: 1;
+  
+      transition-duration: .3s;
+    }
+  
+    /* Reveal content with different delays */
+    .fancybox-slide--current .animated-modal h2 {
+      transition-delay: .1s;
+    }
+  
+    .fancybox-slide--current .animated-modal p {
+      transition-delay: .4s;
+    }
+  
+    .fancybox-slide--current .animated-modal p:first-of-type {
+      transition-delay: .2s;
+    }
+  </style>
+  
+  <div style="display: none;" id="animatedModal" class="animated-modal text-center p-5 fancybox-content">
+    <h2>
+      Успех!
+    </h2>
+    <p>
+      Подтвердите регистрацию в E-mail <br>
+    </p>
+    <p class="mb-0">
+      <svg width="150" height="150" viewBox="0 0 510 510" xmlns="http://www.w3.org/2000/svg"
+        xmlns:xlink="http://www.w3.org/1999/xlink">
+        <path fill="#fff"
+          d="M150.45,206.55l-35.7,35.7L229.5,357l255-255l-35.7-35.7L229.5,285.6L150.45,206.55z M459,255c0,112.2-91.8,204-204,204 S51,367.2,51,255S142.8,51,255,51c20.4,0,38.25,2.55,56.1,7.65l40.801-40.8C321.3,7.65,288.15,0,255,0C114.75,0,0,114.75,0,255 s114.75,255,255,255s255-114.75,255-255H459z">
+        </path>
+      </svg>
+    </p>
+    <button type="button" data-fancybox-close="" class="fancybox-button fancybox-close-small" title="Close"><svg
+        xmlns="http://www.w3.org/2000/svg" version="1" viewBox="0 0 24 24">
+        <path d="M13 12l5-5-1-1-5 5-5-5-1 1 5 5-5 5 1 1 5-5 5 5 1-1z"></path>
+      </svg></button>
+  </div>
+  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="js/jquery.cookie.js"></script>
+  
+  <!-- For Old Browser -->
+  <script src="js/polyfill.min.js" nomodule></script>
+  
+  <!-- версия для разработки, отображает полезные предупреждения в консоли -->
+  <script src="js/vue.js"></script>
+  <script src="js/axios.min.js"></script>
+  
+  <script src="js/jquery.fancybox.min.js"></script>
+  <script src="js/libs.min.js"></script>
+  
+  <!-- Fancy Box demos -->
+  <script src="js/examples.js"></script>
+  
+  <!-- Swiper JS -->
+  <script src="https://unpkg.com/swiper/js/swiper.min.js"></script>
+  
+  <!-- Style Scroll -->
+  <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
+  
+  <script src="js/main.min.js"></script>
+  </body>
+  
+  </html>

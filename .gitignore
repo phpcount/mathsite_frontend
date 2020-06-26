@@ -1,0 +1,12 @@
+node_modules
+test
+dist
+app/index.php1
+app/news.php
+app/index1.html
+app/news1.html
+app/js/es6/main1.js
+app/img/tmp
+app/img/about/bg-about.jpg
+app/img/about/im.jpg
+app/img/about/image.jpg
