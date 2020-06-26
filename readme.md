@@ -14,6 +14,6 @@ In the current project folder and run in terminal
 
 P. S. When using gulp
 
-REST API: [http://localhost:3002]
+[REST API: localhost:3002][http://localhost:3002]
 
-HTTP: [http://localhost:3000]
+[HTTP: localhost:3000][http://localhost:3000]
