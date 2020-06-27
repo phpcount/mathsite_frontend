@@ -1,6 +1,6 @@
 # How to use this project?
 
-Run a XAMPP, LAMP, Open Server or the like and in the current project folder and run in terminal
+Run a XAMPP, LAMP, Open Server or the like and in the current project folder, run in terminal
 
 
 ### Step 1:

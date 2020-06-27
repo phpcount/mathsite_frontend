@@ -1,22 +1,4 @@
 {
-    "posts": [
-        {
-            "id": 1,
-            "title": "json-server",
-            "author": "typicode"
-        }
-    ],
-    "comments": [
-        {
-            "id": 1,
-            "body": "some comment",
-            "postId": 1
-        }
-    ],
-    "profile": {
-        "name": "typicode"
-    },
-
     "routes": {
         "@context": "https://schema.org",
         "@type": "BreadcrumbList",
@@ -25,21 +7,20 @@
                 "@type": "ListItem",
                 "position": 1,
                 "name": "Главная",
-                "item": "https://example.com/news",
+                "item": "index.html",
                 "target": false
             },
             {
                 "@type": "ListItem",
                 "position": 2,
                 "name": "Новости",
-                "item": "https://example.com/books/sciencefiction"
+                "item": "news.html"
             },
             {
                 "@type": "ListItem",
                 "position": 3,
                 "name": "Владимир Путин поручил правительству РФ разработать комплекс мер по обновлению общего образования",
-                "item": "http://teacher-math.ru/2016/01/07/vladimir-putin-poruchil-pravitelstvu-rf-razrabotat-kompleks-mer-po-obnovleniyu-obshhego-obrazovaniya/",
-                "target": true
+                "item": "news-1.html"
             }
             
         ]

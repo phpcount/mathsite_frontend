@@ -65,7 +65,6 @@ let loadContentJQ = {
   remove() {
     let $this = $("#" + this.child);
     if ($this.is(".loading__news")) {
-      console.log("delete load");
       $this.animate(
         { opacity: 0 }, 300,
         () => $this.parent().remove());
@@ -352,7 +351,7 @@ $(function () {
         console.log(progress);
         // $('#custom-scrollbar').mCustomScrollbar("update")
       }
-    }, 1500);
+    }, 1000);
   });
 
   // JQ End
