@@ -6,7 +6,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Сайт учителя математики</title>
-  <link href="https://fonts.googleapis.com/css2?family=PT+Serif:wght@400;700&family=Roboto:wght@100;400;500&Fira+Sans:wght@100;300;400;500;800&family=Bad+Script&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=PT+Serif:wght@400;700&family=Roboto:wght@100;400;500&Fira+Sans:wght@100;300;400;500;800&family=Bad+Script&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
   <link rel="stylesheet" href="css/jquery.fancybox.min.css">
   <link rel="stylesheet" href="https://unpkg.com/swiper/css/swiper.min.css">
@@ -18,30 +20,30 @@
 </head>
 
 <body>
-    <script>
-      // For test
-      function getRandomInt(max) {
-        return Math.floor(Math.random() * Math.floor(max + 1));
-      }
-      var xhr = new XMLHttpRequest(),
-        defSetting = [],
-        index = getRandomInt(1) + 1,
-        //param_php = '<?= $json_data ?? "" ?>';
-        param_php = undefined;
+  <script>
+    // For test
+    function getRandomInt(max) {
+      return Math.floor(Math.random() * Math.floor(max + 1));
+    }
+    var xhr = new XMLHttpRequest(),
+      defSetting = [],
+      index = getRandomInt(1) + 1,
+      //param_php = '<?= $json_data ?? "" ?>';
+      param_php = undefined;
 
-      if (param_php === undefined || param_php === "") {
-        // http://localhost:3002 REST API
-        xhr.open('GET', 'http://localhost:3002/events_user' + '?id=' + 1, false);
-        xhr.send();
-        if (xhr.status != 200) {
-          alert(xhr.status + ': ' + xhr.statusText);
-        } else {
-          defSetting = JSON.parse(xhr.response)[0];
-        }
+    if (param_php === undefined || param_php === "") {
+      // http://localhost:3002 REST API
+      xhr.open('GET', 'http://localhost:3002/events_user' + '?id=' + 1, false);
+      xhr.send();
+      if (xhr.status != 200) {
+        alert(xhr.status + ': ' + xhr.statusText);
       } else {
-        defSetting = JSON.parse(param_php);
+        defSetting = JSON.parse(xhr.response)[0];
       }
-    </script>
+    } else {
+      defSetting = JSON.parse(param_php);
+    }
+  </script>
   <header class="header" id="header">
     <div class="header__inner" style="background-image: url(img/math-bg24.png);">
       <div class="header__logo">
@@ -122,14 +124,9 @@
       <div class="breadcrumb-title">Вы здесь:</div>
       <div class="breadcrumb-links">
         <span vocab="https://schema.org/" typeof="BreadcrumbList">
-          <breadcrumb-data 
-          :mark="mark" 
-          :len="lenObj(breadcrumbList)" 
-          v-if="load" 
-          v-for="(breadcrumb, index) in breadcrumbList[0].itemListElement" 
-          :key="breadcrumb.position" 
-          :breadcrumb="breadcrumb" 
-          :index="index"></breadcrumb-data>
+          <breadcrumb-data :mark="mark" :len="lenObj(breadcrumbList)" v-if="load"
+            v-for="(breadcrumb, index) in breadcrumbList[0].itemListElement" :key="breadcrumb.position"
+            :breadcrumb="breadcrumb" :index="index"></breadcrumb-data>
         </span>
       </div>
     </div>
@@ -139,107 +136,73 @@
   <!-- </div> -->
   <main class="main">
     <div class="container container-main">
-      <article class="news">
-        <div class="news__title">
-          Новости сайта
-        </div>
-        <div id="custom-scrollbar" class="news__items">
-
-          <div class="news-item">
-            <div class="inner-wrapper">
-
-              <h2 class="title"><a href="#">Владимир Путин поручил правительству РФ разработать комплекс мер по обновлению общего образования</a></h2>
-
-              <div class="content-box">
-                <div class="img"><a href="#"><img src="img/news/post-1.jpg" alt="" title="Владимир Путин поручил правительству РФ разработать комплекс мер по обновлению общего образования"></a></div>
-                <div class="desc-short desc-short-container">Владимир Путин дал поручения правительству по итогам декабрьского заседания Госсовета, где говорили об улучшении системы
-                  общего образования в России. Правительство до середины июня должно уменьшить бумажную нагрузку на учителей, которые
-                  сейчас помимо собственно преподавания вынуждены составлять самые разные отчёты. Владимир...</div>
-                <a href="#" class="link btn">Подробнее...</a>
-              </div>
-
-              <div class="content-stats">
-                <span class="views-icon"><i class="far fa-chart-bar"></i></span>
-                <span class="views-total">729 просмотров всего,</span>
-                <span class="views-today">8 просмотров сегодня</span>
-              </div>
-
-
-              <div class="entry-meta">
-                <span class="by-author author"><a class="" href="http://teacher-math.ru/author/admin/"><i class="fas fa-user-alt"></i>admin</a></span>
-
-                <span class="date">
-                  <a href="http://teacher-math.ru/2016/01/07/vladimir-putin-poruchil-pravitelstvu-rf-razrabotat-kompleks-mer-po-obnovleniyu-obshhego-obrazovaniya/" title="22:33" rel="bookmark"><i class="far fa-calendar-alt"></i>
-                    <time class="entry-date published" datetime="2016-01-07T22:33:54+00:00">07.01.2016</time>
-                    <time class="updated hidden" datetime="2016-01-08T16:01:25+00:00">08.01.2016</time>
-                  </a>
-                </span>
-                <span class="category"><a href="http://teacher-math.ru/category/novosti/" rel="category tag"><i class="far fa-folder-open"></i>Новости</a></span>
-
-                <span class="comments">
-                  <a href="http://teacher-math.ru/2016/01/07/vladimir-putin-poruchil-pravitelstvu-rf-razrabotat-kompleks-mer-po-obnovleniyu-obshhego-obrazovaniya/#respond"><i class="far fa-comment-dots"></i>Комментариев
-                    нет</a></span>
-                <!-- Meta -->
-              </div>
-
-              <!-- inner-wrapper -->
-            </div>
-
-            <!-- news item -->
+      <article id="post-1" class="news">
+        <div class="post">
+          <div class="news__title format-standard">
+            Владимир Путин поручил правительству РФ разработать комплекс мер по обновлению общего образования
           </div>
 
-          <div class="news-item">
-            <div class="inner-wrapper">
-
-              <h2 class="title"><a href="#">Школьники и студенты доказали: математика – это предмет, который любят!</a></h2>
-
-              <div class="content-box">
-                <div class="img"><a href="#"><img src="img/news/post-2.jpg" alt="" title="Владимир Путин поручил правительству РФ разработать комплекс мер по обновлению общего образования"></a></div>
-                <div class="desc-short desc-short-container">Более 7 тысяч школьников и студентов приняли активное участие во Всероссийской акции «Я люблю математику», которая была
-                  запущена Минобрнауки России 30 ноября. Интерактивный проект проходил в течение месяца в социальных сетях Instagram и
-                  «ВКонтакте». Правила участия были просты: любому пользователю...</div>
-                <a href="#" class="link btn">Подробнее...</a>
-              </div>
-
-              <div class="content-stats">
-                <span class="views-icon"><i class="far fa-chart-bar"></i></span>
-                <span class="views-total">652 просмотров всего,</span>
-                <span class="views-today">сегодня нет просмотров</span>
-              </div>
-
-
-              <div class="entry-meta">
-                <span class="by-author author"><a class="" href="http://teacher-math.ru/author/admin/"><i class="fas fa-user-alt"></i>Алена Алексеевна</a></span>
-
-                <span class="date">
-                  <a href="http://teacher-math.ru/2016/01/07/vladimir-putin-poruchil-pravitelstvu-rf-razrabotat-kompleks-mer-po-obnovleniyu-obshhego-obrazovaniya/" title="14:10" rel="bookmark"><i class="far fa-calendar-alt"></i>
-                    <time class="entry-date published" datetime="2016-01-06T14:10:54+00:00">06.01.2016</time>
-                    <time class="updated hidden" datetime="2016-01-07T11:27:25+00:00">07.01.2016</time>
-                  </a>
-                </span>
-                <span class="category"><a href="http://teacher-math.ru/category/novosti/" rel="category tag"><i class="far fa-folder-open"></i>Новости</a></span>
-
-                <span class="comments">
-                  <a href="http://teacher-math.ru/2016/01/07/vladimir-putin-poruchil-pravitelstvu-rf-razrabotat-kompleks-mer-po-obnovleniyu-obshhego-obrazovaniya/#respond"><i class="far fa-comment-dots"></i>Комментариев
-                    нет</a></span>
-                <!-- Meta -->
-              </div>
-
-              <!-- inner-wrapper -->
+          <div class="content-box view-standart">
+            <div class="image f-left"><a href="#"><img src="img/news/post-1.jpg" alt=""
+                  title="Владимир Путин поручил правительству РФ разработать комплекс мер по обновлению общего образования"></a>
             </div>
+            <div class="description-wide">Владимир Путин дал поручения правительству по итогам декабрьского заседания
+              Госсовета, где говорили об улучшении системы
+              общего образования в России. Правительство до середины июня должно уменьшить бумажную нагрузку на
+              учителей, которые
+              сейчас помимо собственно преподавания вынуждены составлять самые разные отчёты.
+              <br><br>
+              Владимир Путин дал поручения правительству по итогам декабрьского заседания Госсовета, где говорили об
+              улучшении системы
+              общего образования в России. Правительство до середины июня должно уменьшить бумажную нагрузку на
+              учителей, которые
+              сейчас помимо собственно преподавания вынуждены составлять самые разные отчёты.
+              <br><br>
+              Реже будут проверять и сами школы. Ещё одно важное поручение — сформировать в России систему
+              профессионального роста
+              педагогов с условиями для повышения квалификации и механизмами поощрения. А также создать систему оценки
+              учительского
+              труда, где, среди прочего, учитывалось бы мнение выпускников.
 
-            <!-- news item -->
+              <br><br>Смотрите оригинал материала на <a target="_blank"
+                href="http://www.1tv.ru/news/social/299498">http://www.1tv.ru/news/social/299498</a>
+            </div>
+          </div>
+          <div class="content-stats">
+            <span class="views-icon"><i class="far fa-chart-bar"></i></span>
+            <span class="views-total">729 просмотров всего,</span>
+            <span class="views-today">8 просмотров сегодня</span>
           </div>
 
-          <!-- news items -->
+          <div class="entry-meta">
+            <span class="by-author author"><a class="" href="http://teacher-math.ru/author/admin/"><i
+                  class="fas fa-user-alt"></i>admin</a></span>
+          
+            <span class="date">
+              <a href="http://teacher-math.ru/2016/01/07/vladimir-putin-poruchil-pravitelstvu-rf-razrabotat-kompleks-mer-po-obnovleniyu-obshhego-obrazovaniya/"
+                title="22:33" rel="bookmark"><i class="far fa-calendar-alt"></i>
+                <time class="entry-date published" datetime="2016-01-07T22:33:54+00:00">07.01.2016</time>
+                <time class="updated hidden" datetime="2016-01-08T16:01:25+00:00">08.01.2016</time>
+              </a>
+            </span>
+            <span class="category"><a href="http://teacher-math.ru/category/novosti/" rel="category tag"><i
+                  class="far fa-folder-open"></i>Новости</a></span>
+          
+            <span class="comments">
+              <a
+                href="http://teacher-math.ru/2016/01/07/vladimir-putin-poruchil-pravitelstvu-rf-razrabotat-kompleks-mer-po-obnovleniyu-obshhego-obrazovaniya/#respond"><i
+                  class="far fa-comment-dots"></i>Комментариев
+                нет</a></span>
+            <!-- Meta -->
+          </div>
+
+          <!-- container -->
         </div>
-
-        <!-- container -->
-
       </article>
 
       <aside class="aside">
-        <a href="https://placeholder.com" target="_blank"><img src="http://via.placeholder.com/300x720/66b87b/FFFFFF?text=Боковая+панель"></a>
+        <a href="https://placeholder.com" target="_blank"><img
+            src="http://via.placeholder.com/300x720/66b87b/FFFFFF?text=Боковая+панель"></a>
       </aside>
 
     </div>
@@ -273,15 +236,18 @@
   <div id="modal-register" class="modal modal-register" style="background-image: url(img/math-bg24.png);">
     <form action="" method="post">
       <input type="text" name="" id="" placeholder="Ваше имя">
-      <input type="tel" class="phone" pattern="^\+7[\(]\d{3,}[\)]\d{3,}[\-]\d{4,}$" maxlength="15" name="" id="" placeholder="Ваш телефон +7(XXX)...">
-      <input data-fancybox="" data-animation-duration="500" data-src="#animatedModal" type="submit" value="Зарегистрироваться">
+      <input type="tel" class="phone" pattern="^\+7[\(]\d{3,}[\)]\d{3,}[\-]\d{4,}$" maxlength="15" name="" id=""
+        placeholder="Ваш телефон +7(XXX)...">
+      <input data-fancybox="" data-animation-duration="500" data-src="#animatedModal" type="submit"
+        value="Зарегистрироваться">
     </form>
   </div>
 
   <div id="modal-auth" class="modal modal-auth" style="background-image: url(img/math-bg24.png);">
     <form action="" method="post">
       <input type="text" name="" id="" placeholder="Ваше имя">
-      <input type="tel" class="phone" pattern="^\+7[\(]\d{3,}[\)]\d{3,}[\-]\d{4,}$" maxlength="15" name="" id="" placeholder="Ваш телефон +7(XXX)...">
+      <input type="tel" class="phone" pattern="^\+7[\(]\d{3,}[\)]\d{3,}[\-]\d{4,}$" maxlength="15" name="" id=""
+        placeholder="Ваш телефон +7(XXX)...">
       <input type="submit" value="Войти">
     </form>
   </div>
@@ -289,8 +255,8 @@
 
 
 
-<!-- For TESTING -->
-<style>
+  <!-- For TESTING -->
+  <style>
     .fancybox-slide--current .animated-modal,
     .fancybox-slide--current .animated-modal h2,
     .fancybox-slide--current .animated-modal p {
@@ -375,7 +341,7 @@
     .fancybox-slide--current .animated-modal p:first-of-type {
       transition-delay: .2s;
     }
-</style>
+  </style>
 
   <div style="display: none;" id="animatedModal" class="animated-modal text-center p-5 fancybox-content">
     <h2>
@@ -385,12 +351,15 @@
       Подтвердите регистрацию в E-mail <br>
     </p>
     <p class="mb-0">
-      <svg width="150" height="150" viewBox="0 0 510 510" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-        <path fill="#fff" d="M150.45,206.55l-35.7,35.7L229.5,357l255-255l-35.7-35.7L229.5,285.6L150.45,206.55z M459,255c0,112.2-91.8,204-204,204 S51,367.2,51,255S142.8,51,255,51c20.4,0,38.25,2.55,56.1,7.65l40.801-40.8C321.3,7.65,288.15,0,255,0C114.75,0,0,114.75,0,255 s114.75,255,255,255s255-114.75,255-255H459z">
+      <svg width="150" height="150" viewBox="0 0 510 510" xmlns="http://www.w3.org/2000/svg"
+        xmlns:xlink="http://www.w3.org/1999/xlink">
+        <path fill="#fff"
+          d="M150.45,206.55l-35.7,35.7L229.5,357l255-255l-35.7-35.7L229.5,285.6L150.45,206.55z M459,255c0,112.2-91.8,204-204,204 S51,367.2,51,255S142.8,51,255,51c20.4,0,38.25,2.55,56.1,7.65l40.801-40.8C321.3,7.65,288.15,0,255,0C114.75,0,0,114.75,0,255 s114.75,255,255,255s255-114.75,255-255H459z">
         </path>
       </svg>
     </p>
-    <button type="button" data-fancybox-close="" class="fancybox-button fancybox-close-small" title="Close"><svg xmlns="http://www.w3.org/2000/svg" version="1" viewBox="0 0 24 24">
+    <button type="button" data-fancybox-close="" class="fancybox-button fancybox-close-small" title="Close"><svg
+        xmlns="http://www.w3.org/2000/svg" version="1" viewBox="0 0 24 24">
         <path d="M13 12l5-5-1-1-5 5-5-5-1 1 5 5-5 5 1 1 5-5 5 5 1-1z"></path>
       </svg></button>
   </div>
@@ -417,4 +386,5 @@
 
   <script src="js/main.min.js"></script>
 </body>
+
 </html>
