@@ -41,12 +41,12 @@ class SettingApp {
 }
 
 let loadContentJQ = {
-
   handle: null,
   child: "loading__content",
 
   loading() {
-    let content = `
+    let $handle = $(this.handle),
+        content = `
       <div class="news-item">
           <div id="` + this.child + `" class="loading__news">
             <div class="loading__inner">
@@ -57,12 +57,15 @@ let loadContentJQ = {
           </div>
       </div>
   `;
-    $(this.handle).append(content);
+    if (!$("#" + this.child).is(".loading__news")) {
+      $handle.append(content);
+    }
   },
 
   remove() {
     let $this = $("#" + this.child);
     if ($this.is(".loading__news")) {
+      console.log("delete load");
       $this.animate(
         { opacity: 0 }, 300,
         () => $this.parent().remove());
@@ -222,6 +225,7 @@ $(function () {
     let upadateScroll = setInterval(() => {
       // height window + height scroll >= height of the entire document
       if ($(window).scrollTop() + $(window).height() >= $(document).height() - 200 && !progress) {
+        loadContentJQ.loading();
         console.log("Scrolled to end of content.");
         $items = $("#custom-scrollbar");
         if (totalNews > startPos) {
@@ -239,7 +243,7 @@ $(function () {
             },
 
             beforeSend: function () {
-              loadContentJQ.loading();
+              
               progress = true;  
             },
 
@@ -249,7 +253,7 @@ $(function () {
                 progress = false;
               } else {
                 progress = true;
-                console.log('progress: ');
+                console.log('data: undefined');
               }
             },
 
